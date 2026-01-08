@@ -85,6 +85,15 @@ components:
 
     SystemStatus:
       type: object
+      required:
+        - id
+        - system_code
+        - display_name
+        - status
+        - last_checked
+        - next_check
+        - response_time_ms
+        - error_message
       properties:
         id:
           type: string
@@ -106,4 +115,3 @@ components:
           type: integer
         error_message:
           type: string
-          nullable: true
