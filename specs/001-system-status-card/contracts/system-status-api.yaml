@@ -1,0 +1,109 @@
+﻿openapi: 3.0.3
+info:
+  title: System Status API
+  version: 1.0.0
+  description: API for monitoring the status of external system integrations.
+
+paths:
+  /api/system-status/summary:
+    get:
+      summary: Get high-level status summary
+      operationId: getStatusSummary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusSummary'
+
+  /api/system-status:
+    get:
+      summary: Get all system statuses
+      operationId: getAllSystemStatuses
+      responses:
+        '200':
+          description: List of all monitored systems
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SystemStatus'
+
+  /api/system-status/refresh/{systemCode}:
+    post:
+      summary: Trigger manual refresh for a specific system
+      operationId: refreshSystemStatus
+      parameters:
+        - name: systemCode
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique code of the system (e.g., CCR)
+      responses:
+        '200':
+          description: Refresh completed, returns updated status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemStatus'
+        '404':
+          description: System not found
+
+  /api/system-status/refresh-all:
+    post:
+      summary: Trigger manual refresh for all systems
+      operationId: refreshAllSystems
+      responses:
+        '202':
+          description: Refresh triggered asynchronously
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Refresh triggered for 13 systems"
+
+components:
+  schemas:
+    StatusSummary:
+      type: object
+      properties:
+        total_systems:
+          type: integer
+        online_count:
+          type: integer
+        offline_count:
+          type: integer
+        global_status:
+          type: string
+          enum: [ONLINE, PARTIAL, OFFLINE]
+
+    SystemStatus:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        system_code:
+          type: string
+        display_name:
+          type: string
+        status:
+          type: string
+          enum: [ONLINE, OFFLINE, UNKNOWN, MAINTENANCE]
+        last_checked:
+          type: string
+          format: date-time
+        next_check:
+          type: string
+          format: date-time
+        response_time_ms:
+          type: integer
+        error_message:
+          type: string
+          nullable: true

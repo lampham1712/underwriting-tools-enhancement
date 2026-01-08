@@ -13,7 +13,7 @@
 
 4. System Status - Monitors external system health (CCR, Payment Gateway, BOW, etc.) with 10-minute ping intervals. Shows connection status and timestamps. Includes "retry all" button and individual system refresh icons
  * CCR: will ping (cmd) with the ip address of CCR system and wait for response status.
-    * If the ping fail, need to check with CCR support staff to verify the staus.
+    * If the ping fail, need to check with CCR support staff to verify the staus.fv
     * If the ping success, the green icon of that system will be maintained.
  * Payment Gateway: will ping (cmd) with the ip address of Payment Gateway system and wait for response status.
     * If the ping fail, need to check with Payment Gateway support staff to verify the staus.
