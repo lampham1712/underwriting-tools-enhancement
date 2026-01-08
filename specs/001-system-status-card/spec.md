@@ -74,13 +74,12 @@ As a Support Engineer, I want to manually trigger a refresh for the system statu
 ### Key Entities
 
 - **SystemStatus**: Represents the health state of an external integration.
-    - `id`: Unique identifier. (UUID v7 Not Null) PRIMARY KEY
+    - `id`: Unique identifier. (UUID v4 Not Null) PRIMARY KEY
     - `system_code`: Unique identifier (e.g., "CCR", "PAY_GATE"). (string max 20 chars Not Null).
     - `display_name`: Human-readable name. (string max 100 chars Not Null).
     - `status`: Enum (ONLINE, OFFLINE, UNKNOWN). (string Not Null)
     - `last_checked`: Timestamp of the last ping. (ISO 8601 datetime Not Null)
     - `next_check`: Timestamp of the next scheduled ping. (ISO 8601 datetime Not Null)
-    - `response_time_ms`: Duration of the ping response. (integer Not Null)
     - `created_at`: Timestamp when the record was created. (ISO 8601 datetime Not Null)
     - `updated_at`: Timestamp when the record was last updated. (ISO 8601 datetime Not Null)
 

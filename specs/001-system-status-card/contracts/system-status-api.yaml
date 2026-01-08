@@ -92,7 +92,6 @@ components:
         - status
         - last_checked
         - next_check
-        - response_time_ms
         - error_message
       properties:
         id:
@@ -111,7 +110,5 @@ components:
         next_check:
           type: string
           format: date-time
-        response_time_ms:
-          type: integer
         error_message:
           type: string

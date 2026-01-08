@@ -21,7 +21,7 @@ Audit trail history of status checks. (Not editable, append-only)
 
 | Field Name | Type | Constraints | Description |
 |---|---|---|---|
-| `id` | UUID v4 | Primary Key | Unique identifier. |
+| `id` | UUID v7 | Primary Key | Unique identifier. |
 | `system_code` | VARCHAR(20) | Reference to SystemStatus. |
 | `check_timestamp` | TIMESTAMP | Not Null | When the check occurred. | Reference to last_checked in SystemStatus |
 | `status_result` | VARCHAR(20) | Not Null | Result of the check. |
