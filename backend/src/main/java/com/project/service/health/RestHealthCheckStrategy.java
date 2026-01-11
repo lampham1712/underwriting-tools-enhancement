@@ -13,10 +13,7 @@ public class RestHealthCheckStrategy implements HealthCheckStrategy {
     public RestHealthCheckStrategy(String systemCode, String url, RestTemplateBuilder builder) {
         this.systemCode = systemCode;
         this.url = url;
-        this.restTemplate = builder
-                .setConnectTimeout(Duration.ofSeconds(3))
-                .setReadTimeout(Duration.ofSeconds(5))
-                .build();
+        this.restTemplate = builder.build();
     }
 
     @Override

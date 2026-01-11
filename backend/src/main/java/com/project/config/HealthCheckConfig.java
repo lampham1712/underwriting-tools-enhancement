@@ -3,82 +3,90 @@ package com.project.config;
 import com.project.service.health.HealthCheckStrategy;
 import com.project.service.health.Jt400HealthCheckStrategy;
 import com.project.service.health.RestHealthCheckStrategy;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.time.Duration;
 
 @Configuration
 public class HealthCheckConfig {
 
     private final RestTemplateBuilder restTemplateBuilder;
 
-    public HealthCheckConfig(RestTemplateBuilder restTemplateBuilder) {
-        this.restTemplateBuilder = restTemplateBuilder;
+    public HealthCheckConfig(RestTemplateBuilder restTemplateBuilder,
+                             @Value("${http.client.connection-timeout:5000}") long connectTimeout,
+                             @Value("${http.client.read-timeout:5000}") long readTimeout) {
+        this.restTemplateBuilder = restTemplateBuilder
+                .setConnectTimeout(Duration.ofMillis(connectTimeout))
+                .setReadTimeout(Duration.ofMillis(readTimeout));
     }
 
     @Bean
-    public HealthCheckStrategy ccrStrategy() {
-        return new RestHealthCheckStrategy("CCR", "http://localhost:8081/health", restTemplateBuilder);
+    public HealthCheckStrategy ccrStrategy(@Value("${systems.ccr.url}") String url) {
+        return new RestHealthCheckStrategy("CCR", url, restTemplateBuilder);
     }
 
     @Bean
-    public HealthCheckStrategy paymentGatewayStrategy() {
-        return new RestHealthCheckStrategy("PAY_GATE", "http://localhost:8082/health", restTemplateBuilder);
+    public HealthCheckStrategy paymentGatewayStrategy(@Value("${systems.payment-gateway.url}") String url) {
+        return new RestHealthCheckStrategy("PAY_GATE", url, restTemplateBuilder);
     }
 
     @Bean
-    public HealthCheckStrategy bowStrategy() {
-        return new RestHealthCheckStrategy("BOW", "http://localhost:8083/health", restTemplateBuilder);
+    public HealthCheckStrategy bowStrategy(@Value("${systems.bow.url}") String url) {
+        return new RestHealthCheckStrategy("BOW", url, restTemplateBuilder);
     }
 
     @Bean
-    public HealthCheckStrategy laStrategy() {
-        return new RestHealthCheckStrategy("LA", "http://localhost:8084/health", restTemplateBuilder);
+    public HealthCheckStrategy laStrategy(@Value("${systems.la.url}") String url) {
+        return new RestHealthCheckStrategy("LA", url, restTemplateBuilder);
     }
 
     @Bean
-    public HealthCheckStrategy cubeStrategy() {
-        return new RestHealthCheckStrategy("CUBE", "http://localhost:8085/health", restTemplateBuilder);
+    public HealthCheckStrategy cubeStrategy(@Value("${systems.cube.url}") String url) {
+        return new RestHealthCheckStrategy("CUBE", url, restTemplateBuilder);
     }
 
     @Bean
-    public HealthCheckStrategy casepediaStrategy() {
-        return new RestHealthCheckStrategy("CASEPEDIA", "http://localhost:8086/health", restTemplateBuilder);
+    public HealthCheckStrategy casepediaStrategy(@Value("${systems.casepedia.url}") String url) {
+        return new RestHealthCheckStrategy("CASEPEDIA", url, restTemplateBuilder);
     }
 
     @Bean
-    public HealthCheckStrategy nanoStrategy() {
-        return new RestHealthCheckStrategy("NANO", "http://localhost:8087/health", restTemplateBuilder);
+    public HealthCheckStrategy nanoStrategy(@Value("${systems.nano.url}") String url) {
+        return new RestHealthCheckStrategy("NANO", url, restTemplateBuilder);
     }
 
     @Bean
-    public HealthCheckStrategy jt400Strategy() {
-        // Using mock credentials from quickstart.md/application.properties
-        return new Jt400HealthCheckStrategy("JT400", "192.168.1.100", "testuser", "testpass");
+    public HealthCheckStrategy jt400Strategy(@Value("${systems.jt400.host}") String host,
+                                             @Value("${systems.jt400.username}") String user,
+                                             @Value("${systems.jt400.password}") String pass) {
+        return new Jt400HealthCheckStrategy("JT400", host, user, pass);
     }
 
     @Bean
-    public HealthCheckStrategy intStrategy() {
-        return new RestHealthCheckStrategy("INT", "http://localhost:8089/health", restTemplateBuilder);
+    public HealthCheckStrategy intStrategy(@Value("${systems.int.url}") String url) {
+        return new RestHealthCheckStrategy("INT", url, restTemplateBuilder);
     }
 
     @Bean
-    public HealthCheckStrategy owbOpusStrategy() {
-        return new RestHealthCheckStrategy("OWB_OPUS", "http://localhost:8090/health", restTemplateBuilder);
+    public HealthCheckStrategy owbOpusStrategy(@Value("${systems.owb-opus.url}") String url) {
+        return new RestHealthCheckStrategy("OWB_OPUS", url, restTemplateBuilder);
     }
 
     @Bean
-    public HealthCheckStrategy uwmeStrategy() {
-        return new RestHealthCheckStrategy("UWME", "http://localhost:8091/health", restTemplateBuilder);
+    public HealthCheckStrategy uwmeStrategy(@Value("${systems.uwme.url}") String url) {
+        return new RestHealthCheckStrategy("UWME", url, restTemplateBuilder);
     }
 
     @Bean
-    public HealthCheckStrategy fcrmStrategy() {
-        return new RestHealthCheckStrategy("FCRM", "http://localhost:8092/health", restTemplateBuilder);
+    public HealthCheckStrategy fcrmStrategy(@Value("${systems.fcrm.url}") String url) {
+        return new RestHealthCheckStrategy("FCRM", url, restTemplateBuilder);
     }
 
     @Bean
-    public HealthCheckStrategy dmsStrategy() {
-        return new RestHealthCheckStrategy("DMS", "http://localhost:8093/health", restTemplateBuilder);
+    public HealthCheckStrategy dmsStrategy(@Value("${systems.dms.url}") String url) {
+        return new RestHealthCheckStrategy("DMS", url, restTemplateBuilder);
     }
 }
