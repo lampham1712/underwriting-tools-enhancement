@@ -60,10 +60,10 @@
 ## Phase 6: Polish & Cross-Cutting Concerns
 *Goal: UI styling, error handling, and verification.*
 
-- [ ] T034 Apply "Black Card" styling and responsiveness in frontend/src/components/system-status/SystemStatusCard.css
-- [ ] T035 Implement global error handling for API failures in frontend/src/services/api.ts
-- [ ] T036 Verify SystemStatusLog entries are created correctly in backend/src/main/java/com/project/service/SystemStatusService.java
-- [ ] T037 Conduct final end-to-end verification of all 13 systems
+- [x] T034 Apply "Black Card" styling and responsiveness in frontend/src/components/system-status/SystemStatusCard.css
+- [x] T035 Implement global error handling for API failures in frontend/src/services/api.ts
+- [x] T036 Verify SystemStatusLog entries are created correctly in backend/src/main/java/com/project/service/SystemStatusService.java
+- [x] T037 Conduct final end-to-end verification of all 13 systems
 
 ## Dependencies
 1. **Foundational Phase** must be completed before **User Story 1**.

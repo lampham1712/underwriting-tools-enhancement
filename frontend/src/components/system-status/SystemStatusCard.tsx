@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { StatusSummary, SystemStatus } from '../../types/SystemStatus';
 import { StatusHeader } from './StatusHeader';
 import { MiniSystemCard } from './MiniSystemCard';
+import './SystemStatusCard.css';
 
 const Container = styled.div`
   background-color: #1e1e1e;

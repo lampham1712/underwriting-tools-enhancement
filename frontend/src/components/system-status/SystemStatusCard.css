@@ -1,0 +1,11 @@
+/* System Status Card - Global Styles & Resets */
+.system-status-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .system-status-grid {
+        grid-template-columns: 1fr;
+    }
+}

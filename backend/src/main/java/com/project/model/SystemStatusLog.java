@@ -1,33 +1,33 @@
 package com.project.model;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity
-@Table(name = "system_status_logs")
+@Document(collection = "system_status_logs")
 public class SystemStatusLog {
 
     @Id
     private String id;
 
-    @Column(name = "system_code")
+    @Field("system_code")
     private String systemCode;
 
-    @Column(name = "check_timestamp")
+    @Field("check_timestamp")
     private LocalDateTime checkTimestamp;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status_result")
+    @Field("status_result")
     private Status statusResult;
 
-    @Column(name = "error_details")
+    @Field("error_details")
     private String errorDetails;
 
-    @Column(name = "response_time_ms")
+    @Field("response_time_ms")
     private Integer responseTimeMs;
 
-    @Column(name = "created_at")
+    @Field("created_at")
     private LocalDateTime createdAt;
 
     public SystemStatusLog() {
