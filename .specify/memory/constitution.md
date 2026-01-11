@@ -1,16 +1,17 @@
 ﻿<!--
 SYNC IMPACT REPORT
-Version Change: 1.0.0 -> 1.1.0
-Type: MINOR (New engineering principles and expanded resilience guidance)
+Version Change: 1.1.0 -> 1.2.0
+Type: MINOR (Added comprehensive technology best practices)
 Modified Principles:
-- I. Resilience & Recovery: Added mandatory network timeouts constraint.
-- II. Observability & Monitoring: Added standard health exposure requirement.
-- Backend Ecosystem: Added configuration and DI standards.
+- Technology Standards: Expanded with specific best practices for JS, TS, React, and HTML/CSS.
 Added Sections:
-- VI. Sustainable Engineering: New core principle covering Dependency Injection, External Configuration, and Clean Code standards.
+- JavaScript Best Practices
+- TypeScript Best Practices
+- React.JS Best Practices
+- HTML & CSS Best Practices
 Templates requiring updates:
-- .specify/templates/plan-template.md: ⚠ pending
-- .specify/templates/tasks-template.md: ⚠ pending
+- .specify/templates/plan-template.md: ⚠ pending (should include standards compliance check)
+- .specify/templates/tasks-template.md: ⚠ pending (task definitions should reflect code quality steps)
 -->
 
 # Insurance Policy Automation System Constitution
@@ -46,6 +47,33 @@ Code must prioritize long-term maintainability through loose coupling.
 *   **Styling**: HTML5, CSS
 *   **Responsibility**: Operational dashboard, manual intervention interface, visualization.
 
+#### JavaScript Best Practices
+*   **Scope & Variables**: Avoid Global Scope. Use `const` by default, `let` only when necessary. Never use `var`.
+*   **Asynchronous Code**: Master Promises and `async/await`. Avoid "callback hell" by chaining promises vs nesting.
+*   **Safety**: Always use `"use strict";` mechanics. Use `===` (strict equality) to avoid type coercion errors.
+*   **Purity**: Write pure functions (no side effects) where possible to simplify testing.
+
+#### TypeScript Best Practices
+*   **Types**: Avoid `any`; use `unknown` or specific interfaces.
+*   **Configuration**: Enable `"strict": true` (including `noImplicitAny` and `strictNullChecks`).
+*   **Structure**: Rely on Structural Typing ("duck typing") over nominal typing.
+*   **Inference**: Let TypeScript infer types where obvious (e.g., `const x = 5`) rather than cluttering code.
+*   **Immutability**: Use `readonly` for properties that shouldn't change after initialization.
+
+#### React.JS Best Practices
+*   **Composition**: Build small, focused components; avoid monolithic "God components".
+*   **State**: Never modify `state` or `props` directly (Immutability). Use spread operators or immutable patterns.
+*   **Data Flow**: Unidirectional (Parent -> Child). Use callbacks for Child -> Parent communication.
+*   **Hooks**: Only call Hooks at the top level of component functions (not in loops/conditions).
+*   **Keys**: Always provide a unique `key` prop when rendering lists.
+
+#### HTML & CSS Best Practices
+*   **Semantics**: Use correct semantic tags (`<button>`, `<nav>`, `<article>`) rather than generic `<div>`s.
+*   **Separation of Concerns**: Keep structure (HTML), presentation (CSS), and behavior (JS) separate.
+*   **Responsive**: Mobile-First design pattern (base styles for mobile, `min-width` for larger screens).
+*   **Units**: Use relative units (`rem`, `em`) over `px` for accessibility and scaling.
+*   **Specificity**: Keep CSS selectors simple/flat to prevent "specificity wars" and `!important` usage.
+
 ### Backend Ecosystem
 *   **Core**: Java 21, Spring Boot
 *   **Configuration**: Java Config (`@Configuration`), External Properties (`application.properties`)
@@ -71,4 +99,4 @@ The standard lifecycle is immutable: `Create Policy -> Dedup Checking -> Auto Se
 *   **Ratified**: 2026-01-08
 *   **Last Amended**: 2026-01-11
 
-**Version**: 1.1.0
+**Version**: 1.2.0
