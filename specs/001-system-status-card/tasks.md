@@ -64,6 +64,7 @@
 - [x] T035 Implement global error handling for API failures in frontend/src/services/api.ts
 - [x] T036 Verify SystemStatusLog entries are created correctly in backend/src/main/java/com/project/service/SystemStatusService.java
 - [x] T037 Conduct final end-to-end verification of all 13 systems
+- [x] T038 Verify Database Connectivity (MySQL & MongoDB) with correct credentials and network ports
 
 ## Dependencies
 1. **Foundational Phase** must be completed before **User Story 1**.

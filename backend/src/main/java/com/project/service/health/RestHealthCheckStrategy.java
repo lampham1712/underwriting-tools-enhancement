@@ -11,7 +11,7 @@ public class RestHealthCheckStrategy implements HealthCheckStrategy {
 
     public RestHealthCheckStrategy(String systemCode, String url, RestTemplateBuilder builder) {
         this.systemCode = systemCode;
-        this.url = url;
+        this.url = url != null ? url : "";
         this.restTemplate = builder.build();
     }
 

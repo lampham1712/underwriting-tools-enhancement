@@ -14,8 +14,8 @@ Create a `.env` file in the backend root:
 
 ```properties
 # Database
-SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/insurance_db
-SPRING_DATA_MONGODB_URI=mongodb://localhost:27017/insurance_logs
+SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/underwriting_enhance
+SPRING_DATA_MONGODB_URI=mongodb://localhost:27017/underwriting_enhance
 
 # Legacy System Config (Mock or Real)
 JT400_HOST=192.168.1.100
